@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar {
+  overflow: hidden;
+  position: fixed;  
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;  
+  border-radius: 50%;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+
+body {
+	background-image: url('https://scmedia.itsfogo.com/$-$/b5ee800508ab4160898f5e0874c38cc2.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 20px 70px;
+}

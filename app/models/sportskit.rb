@@ -1,0 +1,2 @@
+class Sportskit < ApplicationRecord
+end

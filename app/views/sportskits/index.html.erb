@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sportskits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sportskits.each do |sportskit| %>
+      <tr>
+        <td><%= link_to 'Show', sportskit %></td>
+        <td><%= link_to 'Edit', edit_sportskit_path(sportskit) %></td>
+        <td><%= link_to 'Destroy', sportskit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% unless current_user && current_user.admin? %>  
+  <% else %>
+<%= link_to 'New Sportskit', new_sportskit_path %>
+<% end %>
