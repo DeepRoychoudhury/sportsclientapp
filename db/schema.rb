@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_224708) do
+ActiveRecord::Schema.define(version: 2020_07_22_193614) do
+
+  create_table "sportskits", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "templates", force: :cascade do |t|
     t.string "title"
@@ -31,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_224708) do
     t.string "uid"
     t.string "name"
     t.text "image"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
