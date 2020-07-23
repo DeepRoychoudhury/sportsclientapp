@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
-require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+#require 'openssl'
+#OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 class SportsController < ApplicationController
   before_action :set_sport, only: [:show, :edit, :update, :destroy]
 
