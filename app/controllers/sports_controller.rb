@@ -17,9 +17,9 @@ class SportsController < ApplicationController
     response = Net::HTTP.get(uri)
     result = JSON.parse(response)
     result.each do |res|
-      @country = @country.to_s + res["country"]
-      @sportsplayed = @sportsplayed.to_s + res["sportsplayed"]
-      @countrywisesports = @country.to_s + "-" + @sportsplayed.to_s
+      @country = res["country"]
+      @sportsplayed = res["sportsplayed"]
+      @countrywisesports = @countrywisesports + @country.to_s + "-" + @sportsplayed.to_s + ";"
     end
     @sports = Sport.all
   end
