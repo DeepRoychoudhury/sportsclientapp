@@ -1,18 +1,26 @@
 require 'net/http'
 require 'json'
-#require 'openssl'
-#OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 class SportsController < ApplicationController
   before_action :set_sport, only: [:show, :edit, :update, :destroy]
 
   # GET /sports
   # GET /sports.json
   def index
+    @country=""
+    @sportsplayed=""
+    @countrywisesports=""
+    @sortedsports
     url = 'https://localhost:8443/SportsREST/api/sports/listall'
     uri = URI(url)
     response = Net::HTTP.get(uri)
-    JSON.parse(response)
-    binding.pry
+    result = JSON.parse(response)
+    result.each do |res|
+      @country = @country.to_s + res["country"]
+      @sportsplayed = @sportsplayed.to_s + res["sportsplayed"]
+      @countrywisesports = @country.to_s + "-" + @sportsplayed.to_s
+    end
     @sports = Sport.all
   end
 
