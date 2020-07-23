@@ -10,12 +10,15 @@
   </thead>
 
   <tbody>   
-    <% @checkingsize = @countrywisesports.split("-").size() %>
-    <% if @checkingsize > 2 %>
+    <% @checkingsize = @countrywisesports.split(";").size() %>
+    <% if @checkingsize > 1 %>
+    <% @countrywisesports = @countrywisesports.split(";") %>
+    <% binding.pry %>
     <% @countrywisesports.each do |sport| %>
     <% @sports = sport.split("-") %>
       <tr>
         <td><%= @sports[0] %></td>
+         <td> : </td>
         <td>Sports played in <%= @sports[0] %> are <%= @sports[1] %></td>
       </tr>
     <% end %>
