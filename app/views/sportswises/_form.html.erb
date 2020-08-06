@@ -1,0 +1,27 @@
+<%= form_with(model: sportswise, local: true) do |form| %>
+  <% if sportswise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sportswise.errors.count, "error") %> prohibited this sportswise from being saved:</h2>
+
+      <ul>
+        <% sportswise.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sportskit %>
+    <%= form.text_field :sportskit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sports_id %>
+    <%= form.text_field :sports_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
