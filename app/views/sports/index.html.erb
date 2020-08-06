@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sports</h1>
+<h1>Countrywise Sports</h1>
 
 <table>
   <thead>
@@ -13,7 +13,6 @@
     <% @checkingsize = @countrywisesports.split(";").size() %>
     <% if @checkingsize > 1 %>
     <% @countrywisesports = @countrywisesports.split(";") %>
-    <% binding.pry %>
     <% @countrywisesports.each do |sport| %>
     <% @sports = sport.split("-") %>
       <tr>
@@ -37,4 +36,12 @@
 <% unless current_user && current_user.admin? %>
 <% else %>
 <%= link_to 'New Sport', new_sport_path %>
+<h4>Below are the sports added so far :</h4>
+<% if @sports != nil %>
+  <% if @sportsadded.size() > 1 %>
+    <% @sportsadded.each do |sport| %>
+    <%= sport.sport %></br>
+  <% end %>
+<% end %>
+<% end %>
 <% end %>

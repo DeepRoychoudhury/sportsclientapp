@@ -12,7 +12,7 @@ class SportsController < ApplicationController
     @sportsplayed=""
     @countrywisesports=""
     @sortedsports
-    url = 'https://localhost:8443/SportsREST/api/sports/listall'
+    url = 'https://sportsrest.azurewebsites.net/api/sports/listall'
     uri = URI(url)
     response = Net::HTTP.get(uri)
     result = JSON.parse(response)
@@ -21,7 +21,7 @@ class SportsController < ApplicationController
       @sportsplayed = res["sportsplayed"]
       @countrywisesports = @countrywisesports + @country.to_s + "-" + @sportsplayed.to_s + ";"
     end
-    @sports = Sport.all
+    @sportsadded = Sport.all
   end
 
   # GET /sports/1
@@ -40,7 +40,7 @@ class SportsController < ApplicationController
 
   # POST /sports
   # POST /sports.json
-  def create
+  def create    
     @sport = Sport.new(sport_params)
 
     respond_to do |format|
@@ -86,6 +86,6 @@ class SportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sport_params
-      params.fetch(:sport, {})
+      params.require(:sport).permit(:sport)
     end
 end
