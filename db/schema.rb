@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_213721) do
+ActiveRecord::Schema.define(version: 2020_08_04_115650) do
 
   create_table "sports", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2020_07_22_213721) do
   create_table "sportskits", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sportswises", force: :cascade do |t|
+    t.string "sportskit"
+    t.integer "sports_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sports_id"], name: "index_sportswises_on_sports_id"
   end
 
   create_table "templates", force: :cascade do |t|
@@ -46,4 +54,5 @@ ActiveRecord::Schema.define(version: 2020_07_22_213721) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sportswises", "sports", column: "sports_id"
 end

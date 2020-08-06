@@ -12,7 +12,7 @@ class SportsController < ApplicationController
     @sportsplayed=""
     @countrywisesports=""
     @sortedsports
-    url = 'https://localhost:8443/SportsREST/api/sports/listall'
+    url = 'https://sportsrest.azurewebsites.net/api/sports/listall'
     uri = URI(url)
     response = Net::HTTP.get(uri)
     result = JSON.parse(response)
