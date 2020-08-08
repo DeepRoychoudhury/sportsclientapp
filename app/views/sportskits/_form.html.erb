@@ -10,7 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+  <div>     
+    <%= form.label :sport %>
+    <% sport_array=Sport.all.map {|sport| [sport.sport,sport.id]} %>
+    <%= form.select :sport_id, options_for_select(sport_array) %>
+  </div>
+  <div>  
+    <%= form.label :kit %>
+    <%= form.text_area :kit %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

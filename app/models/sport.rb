@@ -1,3 +1,3 @@
 class Sport < ApplicationRecord
-	has_many :sportswises
+	has_many :sportkits
 end
