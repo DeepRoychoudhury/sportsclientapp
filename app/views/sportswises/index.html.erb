@@ -1,29 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sportswises</h1>
+<h1>Kits available for <%= Sport.find(params[:sport_id]).sport %></h1>
 
 <table>
   <thead>
     <tr>
       <th>Sportskit</th>
-      <th>Sports</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @sportswises.each do |sportswise| %>
+    <% @sportskits.each do |sportskit| %>
       <tr>
-        <td><%= sportswise.sportskit %></td>
-        <td><%= sportswise.sports_id %></td>
-        <td><%= link_to 'Show', sportswise %></td>
-        <td><%= link_to 'Edit', edit_sportswise_path(sportswise) %></td>
-        <td><%= link_to 'Destroy', sportswise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= sportskit.kit %></td>
+        <td><%= link_to 'Show', sportskit %></td>
+        <td><%= link_to 'Edit', edit_sportskit_path(sportskit) %></td>
+        <td><%= link_to 'Destroy', sportskit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Sportswise', new_sportswise_path %>

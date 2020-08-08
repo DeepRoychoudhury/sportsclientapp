@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 	root 'templates#index'
 	resources :templates	
   	resources :sports do
-		resources :sportswises
+		resources :sportswises	
 	end
 	resources :sportskits 
+	resources :currencies
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
