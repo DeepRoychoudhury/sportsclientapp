@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_004838) do
+ActiveRecord::Schema.define(version: 2020_08_08_165917) do
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "currencytype"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sports", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -23,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_004838) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "sport_id", null: false
     t.string "kit"
+    t.float "price"
     t.index ["sport_id"], name: "index_sportskits_on_sport_id"
   end
 

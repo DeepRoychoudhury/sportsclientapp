@@ -4,7 +4,11 @@
 <h3>Please select your sport</h3>
 
 <div class="wrapper">
-  <div class="box cricket" >Cricket</div>
+  <div style="display: block;"> 
+    <div class="box cricket" style="position: relative;" >
+    </div>
+    <center><%= link_to 'Cricket', sport_sportswises_path('2') %></center>  
+  </div>
   <div class="box football">Football</div>
   <div class="box hockey">Hockey</div>
   <div class="box badminton">Badminton</div>
@@ -18,7 +22,7 @@
   <div class="box rugby">Rugby</div>
 </div>
 
-
+<div>
 <br>
 <% unless current_user && current_user.admin? %>  
   <% else %>
@@ -45,3 +49,4 @@
 </table>
 <%= link_to 'New Sportskit', new_sportskit_path %>
 <% end %>
+</div>

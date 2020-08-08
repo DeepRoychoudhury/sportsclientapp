@@ -4,7 +4,8 @@ class SportswisesController < ApplicationController
   # GET /sportswises
   # GET /sportswises.json
   def index
-    @sportswises = Sportswise.all
+    @sport = Sport.find(params[:sport_id])
+    @sportskits = Sportskit.all.where(:sport_id => @sport.id)
   end
 
   # GET /sportswises/1
