@@ -2,24 +2,6 @@
 
 <h1>Sports Kits</h1>
 <h3>Please select your sport</h3>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sportskits.each do |sportskit| %>
-      <tr>
-        <td><%= link_to 'Show', sportskit %></td>
-        <td><%= link_to 'Edit', edit_sportskit_path(sportskit) %></td>
-        <td><%= link_to 'Destroy', sportskit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 
 <div class="wrapper">
   <div class="box cricket" >Cricket</div>
@@ -40,5 +22,26 @@
 <br>
 <% unless current_user && current_user.admin? %>  
   <% else %>
+  <table>
+  <thead>
+    <tr>
+      <th>Sport</th>
+       <th>Kit</th>
+       <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sportskits.each do |sportskit| %>
+      <tr>
+        <td><%= Sport.find(sportskit.sport_id).sport %></td>
+        <td><%= sportskit.kit %></td>
+        <td><%= link_to 'Show', sportskit %></td>
+        <td><%= link_to 'Edit', edit_sportskit_path(sportskit) %></td>
+        <td><%= link_to 'Destroy', sportskit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'New Sportskit', new_sportskit_path %>
 <% end %>
