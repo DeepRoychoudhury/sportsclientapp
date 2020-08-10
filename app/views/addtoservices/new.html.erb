@@ -1,0 +1,18 @@
+<%= form_for [@addtoservice],class: "container", html: { multipart: true } do |form| %>
+
+<h1>Add Data to Restful Webservice</h1>
+
+<div>  
+  <%= form.label :country %>
+  <%= form.text_area :country %>
+</div></br>
+
+<div>  
+  <%= form.label :sportsplayed %>
+  <%= form.text_area :sportsplayed %>
+</div></br>
+
+ <div class="actions">
+    <%= form.submit %>
+ </div>
+<% end %>

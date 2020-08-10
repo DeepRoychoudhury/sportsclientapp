@@ -10,7 +10,6 @@ class CurrenciesController < ApplicationController
 	end
 
   def create
-  	binding.pry
   	@currency = Currency.new(currency_params)
 
     respond_to do |format|

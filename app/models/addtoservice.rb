@@ -1,0 +1,2 @@
+class Addtoservice < ApplicationRecord
+end
