@@ -24,8 +24,8 @@ production:
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  database: sportsdatabase
-  username: postgres
-  password: postgres
-  host: sportsdatabase.cpwytlyekgvv.us-east-1.rds.amazonaws.com
-  port: 5432 
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %> 
