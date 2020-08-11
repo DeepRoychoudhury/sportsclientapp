@@ -32,6 +32,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'pry'
 gem 'openssl'
+gem 'rest-client'
 
 group :production do
 	gem 'pg'

@@ -1,7 +1,5 @@
-require 'net/http'
-require 'uri'
-require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+require 'rest-client'
+require 'json'
 class AddtoservicesController < ApplicationController
   def index
   end
@@ -12,16 +10,15 @@ class AddtoservicesController < ApplicationController
 
   def create
   	@parameters = addtoservice_params
-  	uri = URI.parse("https://sportsrest.azurewebsites.net/api/sports/add")
-  	response = Net::HTTP.post_form(uri, {"country" => @parameters[:country],"sportsplayed" => @parameters[:sportsplayed]})
-  	http = Net::HTTP.new(uri.host, uri.port)
-  	http.use_ssl = true
-  	request = Net::HTTP::Post.new(uri.request_uri)  	
-  	request.set_form_data({"country" => @parameters[:country],"sportsplayed" => @parameters[:sportsplayed]})
-  	request.set_content_type("application/json")
-  	response = http.request(request)
-  	puts response.code
-  	redirect_to new_addtoservice_path
+    unless current_user && current_user.admin?
+      
+    else
+    json_obj = JSON.generate({:country => @parameters[:country], :sportsplayed => @parameters[:sportsplayed]})
+    binding.pry
+  	data = RestClient.post("https://sportsrest.azurewebsites.net/api/sports/add",json_obj, :content_type => "text/plain")
+  	end
+    redirect_to new_addtoservice_path
+
   end
 
   def edit

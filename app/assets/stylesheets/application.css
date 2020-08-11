@@ -52,7 +52,6 @@ body {
   border-radius: 5px;
   padding: 30px;
   font-size: 150%;
-  opacity: 0.2;
 }
 
 .box:nth-child(even) {

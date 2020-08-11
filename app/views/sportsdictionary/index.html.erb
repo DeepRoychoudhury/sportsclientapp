@@ -1,0 +1,32 @@
+<h1>Sports Dictionary</h1>
+
+<table>
+  <thead>
+    <tr>
+    	<th>Sport</th>
+    	<th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>   
+    <% @checkingsize = @sportsdictionary.split(";;").size() %>
+    <% if @checkingsize > 1 %>
+    <% @sportsdictionary = @sportsdictionary.split(";;") %>
+    <% @sportsdictionary.each do |sport| %>
+    <% @sports = sport.split("--") %>
+      <tr>
+        <td><%= @sports[0] %></td>
+         <td> : </td>
+        <td><%= @sports[1] %></td>
+      </tr>
+    <% end %>
+    <% else %>
+      <% @sports = @sportsdictionary.split("--") %>
+      <tr>
+        <td><%= @sports[0] %></td>
+        <td> : </td>
+        <td><%= @sports[1] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -15,8 +15,13 @@
     <div class="navbar">
       <a href=<%= root_path %>>Home</a>
       <a href=<%= sports_path %>>Countrywise Sports</a>
+      <a href=<%= sportsdictionary_index_path %>>Sports Dictionary</a>
       <a href=<%= sportskits_path %>>Sports Kit</a>
-      <a href="#contact">Contact</a>
+      <a href=<%= contact_index_path %>>Contact</a>
+      <% unless current_user && current_user.admin? %>
+    <% else %>
+      <a href=<%= new_addtoservice_path %>>Post to Restful Webservice</a>
+      <% end %>
       <a> 
     <%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
     </div>    
