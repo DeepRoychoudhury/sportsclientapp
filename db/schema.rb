@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_234731) do
+ActiveRecord::Schema.define(version: 2020_08_11_113237) do
 
   create_table "addtoservices", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 2020_08_10_234731) do
 
   create_table "currencies", force: :cascade do |t|
     t.string "currencytype"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "invoicenumber"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
