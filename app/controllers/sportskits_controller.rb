@@ -25,6 +25,11 @@ class SportskitsController < ApplicationController
   def edit
   end
 
+  def buy
+    @sportskit = Sportskit.find(params[:sportskit_id])
+    binding.pry
+  end  
+
   # POST /sportskits
   # POST /sportskits.json
   def create

@@ -1,0 +1,21 @@
+<h4>Buyer's Page</h4>
+<h2>Congrats!!! You purchased the below item</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Sportskit</th>
+      <th>Currency</th>
+      <th>Price</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @sportskit.kit %></td>
+        <td><%= @sportskit.currency %></td>
+        <td><%= @sportskit.price %></td>
+        <td><%= link_to 'Generate Invoice', 'https://hotelapi20200806072002.azurewebsites.net/invoice/getitems?invoiceNumber=11&customerName&productName=P1&productName=P2&productPrice=2&productPrice=32&totalAmt=43&balanceAmt=5&transactionType=cash&siteName=dsf'%></td>
+      </tr>
+  </tbody>
+</table>
