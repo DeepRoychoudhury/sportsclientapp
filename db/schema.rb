@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_193806) do
+ActiveRecord::Schema.define(version: 2020_08_10_234731) do
 
   create_table "addtoservices", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_193806) do
     t.integer "sport_id", null: false
     t.string "kit"
     t.float "price"
+    t.string "currency"
     t.index ["sport_id"], name: "index_sportskits_on_sport_id"
   end
 
