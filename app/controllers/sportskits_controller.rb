@@ -27,14 +27,15 @@ class SportskitsController < ApplicationController
 
   def buy
     @sportskit = Sportskit.find(params[:sportskit_id])
+    @sportskit_id=params[:sportskit_id]
     @invoicenum = Invoice.maximum("invoicenumber")
     if @invoicenum == nil
       @invoicenum=1
-      @invoice=Invoice.new(:invoicenumber => @invoicenum)
+      @invoice=Invoice.new(:invoicenumber => @invoicenum, :product_id => @sportskit_id)
       @invoice.save
     else
       @invoicenum=@invoicenum+1      
-      @invoice=Invoice.new(:invoicenumber => @invoicenum)
+      @invoice=Invoice.new(:invoicenumber => @invoicenum, :product_id => @sportskit_id)
       @invoice.save
     end
     @url = "https://hotelapi20200806072002.azurewebsites.net/invoice/getitems?invoiceNumber="+@invoicenum.to_s+"&customerName="+current_user.email.to_s+"&productName="+@sportskit.kit.to_s+"&productName=&productPrice="+@sportskit.currency.to_s+" "+@sportskit.price.to_s+"&productPrice=&totalAmt="+@sportskit.price.to_s+"&balanceAmt=5&transactionType=Credit/Debit_Card&siteName=SportsClientApp"
