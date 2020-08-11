@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   	resources :sports do
 		resources :sportswises	
 	end
-	resources :sportskits 
+	resources :sportskits do
+			get :buy
+	end
 	resources :currencies
 	resources :addtoservices
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
