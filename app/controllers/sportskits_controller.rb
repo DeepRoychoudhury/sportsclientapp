@@ -28,9 +28,7 @@ class SportskitsController < ApplicationController
   # POST /sportskits
   # POST /sportskits.json
   def create
-    binding.pry
     @sportskit = Sportskit.new(sportskit_params)
-
     respond_to do |format|
       if @sportskit.save
         format.html { redirect_to @sportskit, notice: 'Sportskit was successfully created.' }
@@ -74,6 +72,6 @@ class SportskitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sportskit_params
-      params.require(:sportskit).permit(:sport_id, :kit)
+      params.require(:sportskit).permit(:sport_id, :kit, :currency, :price)
     end
 end
