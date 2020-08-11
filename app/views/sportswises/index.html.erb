@@ -18,9 +18,13 @@
         <td><%= sportskit.kit %></td>
         <td><%= sportskit.currency %></td>
         <td><%= sportskit.price %></td>
+        <% unless current_user && current_user.admin? %>
+        <td><%= link_to 'Buy', sportskit_buy_path(sportskit) %></td>
+        <% else %>
         <td><%= link_to 'Show', sportskit %></td>
         <td><%= link_to 'Edit', edit_sportskit_path(sportskit) %></td>
         <td><%= link_to 'Destroy', sportskit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end %>
       </tr>
     <% end %>
   </tbody>

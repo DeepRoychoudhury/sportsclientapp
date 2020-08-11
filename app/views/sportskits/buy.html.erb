@@ -1,0 +1,21 @@
+<h4>Buyer's Page</h4>
+<h2>Congrats!!! You purchased the below item</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Sportskit</th>
+      <th>Currency</th>
+      <th>Price</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @sportskit.kit %></td>
+        <td><%= @sportskit.currency %></td>
+        <td><%= @sportskit.price %></td>
+        <td><%= link_to 'Generate Invoice', @url %></td>
+      </tr>
+  </tbody>
+</table>
