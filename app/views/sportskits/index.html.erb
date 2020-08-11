@@ -9,17 +9,36 @@
     </div>
     <center><%= link_to 'Cricket', sport_sportswises_path('2') %></center>  
   </div>
-  <div class="box football">Football</div>
-  <div class="box hockey">Hockey</div>
-  <div class="box badminton">Badminton</div>
-  <div class="box tabletennis">Table Tennis</div>
-  <div class="box tennis">Tennis</div>
-  <div class="box handball">Hand Ball</div>
-  <div class="box volleyball">Volley Ball</div>
-  <div class="box swimming">Swimming</div>
-  <div class="box hurling">Hurling</div>
-  <div class="box baseball">Baseball</div>
-  <div class="box rugby">Rugby</div>
+  <div style="display: block;"> 
+  <div class="box football" style="position: relative;"></div>
+<center><%= link_to 'Football', sport_sportswises_path('3') %></center>
+  </div>
+  <div style="display: block;"> 
+  <div class="box hockey" style="position: relative;"></div>
+  <center><%= link_to 'Hockey', sport_sportswises_path('4') %></center></div>
+  <div style="display: block;"> 
+  <div class="box badminton" style="position: relative;"></div>
+  <center><%= link_to 'Badminton', sport_sportswises_path('5') %></center></div>
+<div style="display: block;"> 
+  <div class="box tabletennis" style="position: relative;"></div>
+  <center><%= link_to 'Table Tennis', sport_sportswises_path('6') %></center></div>
+  <div style="display: block;"> 
+  <div class="box tennis" style="position: relative;"></div>
+  <center><%= link_to 'Tennis', sport_sportswises_path('7') %></center></div>
+  <div style="display: block;"> 
+  <div class="box handball" style="position: relative;"></div>
+  <center><%= link_to 'Hand Ball', sport_sportswises_path('2') %></center></div>
+  <div style="display: block;"> 
+  <div class="box volleyball" style="position: relative;"></div>
+  <center><%= link_to 'Volley Ball', sport_sportswises_path('2') %></center></div>
+  <div style="display: block;"> 
+  <div class="box swimming" style="position: relative;"></div><center><%= link_to 'Swimming', sport_sportswises_path('2') %></center></div>
+  <div style="display: block;"> 
+  <div class="box hurling" style="position: relative;"></div><center><%= link_to 'Hurling', sport_sportswises_path('2') %></center></div>
+  <div style="display: block;"> 
+  <div class="box baseball" style="position: relative;"></div><center><%= link_to 'Baseball', sport_sportswises_path('2') %></center></div>
+  <div style="display: block;"> 
+  <div class="box rugby" style="position: relative;"></div><center><%= link_to 'Rugby', sport_sportswises_path('2') %></center></div>
 </div>
 
 <div>
@@ -31,6 +50,8 @@
     <tr>
       <th>Sport</th>
        <th>Kit</th>
+       <th>Currency</th>
+       <th>Price</th>
        <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -40,6 +61,8 @@
       <tr>
         <td><%= Sport.find(sportskit.sport_id).sport %></td>
         <td><%= sportskit.kit %></td>
+        <td><%= sportskit.currency %></td>
+        <td><%= sportskit.price %></td>
         <td><%= link_to 'Show', sportskit %></td>
         <td><%= link_to 'Edit', edit_sportskit_path(sportskit) %></td>
         <td><%= link_to 'Destroy', sportskit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
