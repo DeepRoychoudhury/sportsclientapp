@@ -14,7 +14,6 @@ class AddtoservicesController < ApplicationController
       
     else
     json_obj = JSON.generate({:country => @parameters[:country], :sportsplayed => @parameters[:sportsplayed]})
-    binding.pry
   	data = RestClient.post("https://sportsrest.azurewebsites.net/api/sports/add",json_obj, :content_type => "text/plain")
   	end
     redirect_to new_addtoservice_path
