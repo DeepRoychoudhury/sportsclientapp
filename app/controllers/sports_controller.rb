@@ -8,6 +8,7 @@ class SportsController < ApplicationController
   # GET /sports
   # GET /sports.json
   def index
+    begin
     @country=""
     @sportsplayed=""
     @countrywisesports=""
@@ -22,6 +23,9 @@ class SportsController < ApplicationController
       @countrywisesports = @countrywisesports + @country.to_s + "-" + @sportsplayed.to_s + ";"
     end
     @sportsadded = Sport.all
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   # GET /sports/1
@@ -31,7 +35,11 @@ class SportsController < ApplicationController
 
   # GET /sports/new
   def new
+    begin
     @sport = Sport.new
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   # GET /sports/1/edit
@@ -41,6 +49,7 @@ class SportsController < ApplicationController
   # POST /sports
   # POST /sports.json
   def create    
+    begin 
     @sport = Sport.new(sport_params)
 
     respond_to do |format|
@@ -52,11 +61,15 @@ class SportsController < ApplicationController
         format.json { render json: @sport.errors, status: :unprocessable_entity }
       end
     end
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   # PATCH/PUT /sports/1
   # PATCH/PUT /sports/1.json
   def update
+    begin
     respond_to do |format|
       if @sport.update(sport_params)
         format.html { redirect_to @sport, notice: 'Sport was successfully updated.' }
@@ -66,16 +79,23 @@ class SportsController < ApplicationController
         format.json { render json: @sport.errors, status: :unprocessable_entity }
       end
     end
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   # DELETE /sports/1
   # DELETE /sports/1.json
   def destroy
+    begin
     @sport.destroy
     respond_to do |format|
       format.html { redirect_to sports_url, notice: 'Sport was successfully destroyed.' }
       format.json { head :no_content }
     end
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   private

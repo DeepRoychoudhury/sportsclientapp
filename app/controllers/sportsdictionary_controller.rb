@@ -4,6 +4,7 @@ require 'openssl'
 
 class SportsdictionaryController < ApplicationController
   def index
+    begin
   	@sportsdictionary=""
   	url = 'https://thesportsdb.com/api/v1/json/1/all_sports.php'
     uri = URI(url)
@@ -17,5 +18,8 @@ class SportsdictionaryController < ApplicationController
 
     end
     end
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 end
