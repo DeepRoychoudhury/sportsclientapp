@@ -3,13 +3,18 @@ class CurrenciesController < ApplicationController
 
   # GET /currencies/new
   def new
+    begin
   	@currency = Currency.new
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
 	def show
 	end
 
   def create
+    begin
   	@currency = Currency.new(currency_params)
 
     respond_to do |format|
@@ -21,6 +26,9 @@ class CurrenciesController < ApplicationController
         format.json { render json: @currency.errors, status: :unprocessable_entity }
       end
     end
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   private

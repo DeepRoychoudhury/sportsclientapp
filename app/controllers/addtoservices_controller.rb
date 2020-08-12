@@ -5,10 +5,15 @@ class AddtoservicesController < ApplicationController
   end
 
   def new
+    begin 
   	@addtoservice = Addtoservice.new
+  rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
   end
 
   def create
+    begin
   	@parameters = addtoservice_params
     unless current_user && current_user.admin?
       
@@ -16,6 +21,9 @@ class AddtoservicesController < ApplicationController
     json_obj = JSON.generate({:country => @parameters[:country], :sportsplayed => @parameters[:sportsplayed]})
   	data = RestClient.post("https://sportsrest.azurewebsites.net/api/sports/add",json_obj, :content_type => "text/plain")
   	end
+    rescue Exception => e
+    puts ("Found Exception : "+e.to_s)
+  end
     redirect_to new_addtoservice_path
 
   end
