@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json'
+require 'base64'
 class AddtoservicesController < ApplicationController
   def index
   end
@@ -18,8 +19,11 @@ class AddtoservicesController < ApplicationController
     unless current_user && current_user.admin?
       
     else
+      auth = Base64.encode64("admin:secret")
+      basic_auth = "Basic "+auth
     json_obj = JSON.generate({:country => @parameters[:country], :sportsplayed => @parameters[:sportsplayed]})
-  	data = RestClient.post("https://sportsrest.azurewebsites.net/api/sports/add",json_obj, :content_type => "text/plain")
+  	data = RestClient.post("https://sportsrest.azurewebsites.net/api/sports/add",json_obj, :content_type => "text/plain", :Authorization => basic_auth)
+    binding.pry
   	end
     rescue Exception => e
     puts ("Found Exception : "+e.to_s)
