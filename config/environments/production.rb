@@ -61,7 +61,24 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "sportsclientapp_production"
 
   config.action_mailer.perform_caching = false
+config.action_mailer.delivery_method = :sendmail
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'x19109130@student.ncirl.ie'}
+config.action_mailer.default_url_options={ :host => "sportsclientapp.herokuapp.com" }
 
+  config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+address:              'smtp.office365.com',
+port:                 '587',
+domain:               'office365.com',
+user_name:            'x19109130@student.ncirl.ie',
+password:             'Dncb@123',
+authentication:       'login',
+enable_starttls_auto: true  
+}
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
